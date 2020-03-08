@@ -27,19 +27,18 @@ function saveTarefa(e) {
 
 function getTarefas() {
     let tarefas = JSON.parse(localStorage.getItem('tarefas'))
-    let tarefasView = document.getElementById('tarefas')
+    let tarefasView = document.getElementById('resultado')
     tarefasView.innerHTML = ''
     for(let i = 0; i < tarefas.length; i++) {
         let titulo = tarefas[i].titulo
         let descricao = tarefas[i].descricao
 
-        tarefasView.innerHTML += `<div class="card mb-3">
-            <div class="card-body">
-                <p>${titulo} - ${descricao}
-                    <a href="#" onclick="deleteTarefa('${titulo}')" class="btn btn-danger">Delete</a>
-                </p>
-            </div>
-        </div>`
+        tarefasView.innerHTML += `
+            <tr>
+                <td>${titulo}</td>
+                <td>${descricao}</td>
+                <td><button onclick="deleteTarefa('${titulo}')">Deletar</button></td>
+            </tr>`
     }
 
 }
